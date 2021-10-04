@@ -1,0 +1,248 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div ibmRow class="space-mb-5 reset-margin-left">
+  <div ibmCol [columnNumbers]="{'lg': 6, 'md': 6, 'sm': 6}">
+    <form [formGroup]="hotelForm">
+      <div ibmCol>
+        <div *ngIf="hotelForm.get('name'); let formControl" data-text-input class="bx--form-item bx--text-input-wrapper">
+          <label for="hotelName" class="bx--label">Hotel name</label>
+          <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+               class="bx--text-input__field-wrapper">
+            <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+              <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+            </div>
+            <input id="hotelName"
+                   maxlength="50"
+                   formControlName="name"
+                   type="text"
+                   class="bx--text-input"
+                   placeholder="Hotel name"
+                   required
+                   appAutofocus
+                   autocomplete="on"
+                   [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+          </div>
+          <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+            <div id="error-hotel-name-field-is-required" [hidden]="!formControl.hasError('required')">
+              Hotel name field is required!
+            </div>
+            <div id="error-hotel-name-max-size-field-is-required" [hidden]="!formControl.hasError('maxlength')">
+              Hotel name maximum size is 50 characters!
+            </div>
+            <div id="error-hotel-name-contains-string-forbidden-characters" [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+              Hotel name can only contain letters, numbers, whitespace and the following symbols: _ . & -
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ibmCol>
+        <div *ngIf="hotelForm.get('id'); let formControl" data-text-input class="bx--form-item bx--text-input-wrapper">
+          <label for="hotelId" class="bx--label space-mt-6">Hotel ID</label>
+          <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+               class="bx--text-input__field-wrapper">
+            <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+              <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+            </div>
+            <input id="hotelId"
+                   maxlength="50"
+                   formControlName="id"
+                   type="text"
+                   class="bx--text-input"
+                   placeholder="Hotel ID"
+                   required
+                   autocomplete="on"
+                   [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+          </div>
+          <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+            <div id="error-hotel-id-field-is-required" [hidden]="!formControl.hasError('required')">
+              Hotel ID field is required!
+            </div>
+            <div id="error-hotel-id-not-unique" [hidden]="!formControl.hasError('notUnique')">
+              Hotel ID already exists!
+            </div>
+            <div id="error-hotel-id-max-size-field-is-required" [hidden]="!formControl.hasError('maxlength')">
+              Hotel ID maximum size is 50 characters!
+            </div>
+            <div id="error-hotel-id-contains-id-forbidden-characters" [hidden]="!formControl.hasError('idContainsForbiddenCharacters')">
+              Hotel ID can only contain letters, numbers and the following symbols: _ - .
+            </div>
+          </div>
+        </div>
+      </div>
+      <div formGroupName="address">
+        <div ibmRow class="space-mt-6 space-ml-1 reset-right">
+          <div ibmCol [columnNumbers]="{'lg': 9, 'md': 9, 'sm': 9}">
+            <div *ngIf="hotelForm.get('address.street'); let formControl" data-text-input class="bx--form-item bx--text-input-wrapper">
+              <label for="street" class="bx--label">Street</label>
+              <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+                   class="bx--text-input__field-wrapper">
+                <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+                  <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+                </div>
+                <input id="street"
+                       maxlength="50"
+                       formControlName="street"
+                       type="text"
+                       class="bx--text-input"
+                       placeholder="Street"
+                       required
+                       autocomplete="on"
+                       [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+              </div>
+              <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+                <div id="error-street-field-is-required" [hidden]="!formControl.hasError('required')">
+                  Street field is required!
+                </div>
+                <div id="error-street-max-size-field-is-required" [hidden]="!formControl.hasError('maxlength')">
+                  Street maximum size is 50 characters!
+                </div>
+                <div id="error-street-contains-string-forbidden-characters" [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+                  Street can only contain letters, numbers, whitespace and the following symbols: _ . & -
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ibmCol>
+            <div *ngIf="hotelForm.get('address.houseNumber'); let formControl" data-text-input class="bx--form-item bx--text-input-wrapper">
+              <label for="houseNumber" class="bx--label">House number</label>
+              <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+                   class="bx--text-input__field-wrapper">
+                <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+                  <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+                </div>
+                <input id="houseNumber"
+                       maxlength="50"
+                       formControlName="houseNumber"
+                       type="text"
+                       class="bx--text-input"
+                       placeholder="House number"
+                       required
+                       autocomplete="on"
+                       [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+              </div>
+              <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+                <div id="error-house-number-field-is-required" [hidden]="!formControl.hasError('required')">
+                  House number field is required!
+                </div>
+                <div id="error-house-number-max-size-field-is-required" [hidden]="!formControl.hasError('maxlength')">
+                  House number maximum size is 50 characters!
+                </div>
+                <div id="error-house-number-contains-string-forbidden-characters" [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+                  House number can only contain letters, numbers, whitespace and the following symbols: _ . & -
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ibmRow class="space-mt-6 space-ml-1 reset-right">
+          <div ibmCol [columnNumbers]="{'lg': 3, 'md': 3, 'sm': 8}">
+            <div *ngIf="hotelForm.get('address.postalCode'); let formControl" data-text-input class="bx--form-item bx--text-input-wrapper">
+              <label for="postalCode" class="bx--label">Postcode</label>
+              <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+                   class="bx--text-input__field-wrapper">
+                <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+                  <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+                </div>
+                <input id="postalCode"
+                       maxlength="50"
+                       formControlName="postalCode"
+                       type="text"
+                       class="bx--text-input"
+                       placeholder="Postcode"
+                       required
+                       autocomplete="on"
+                       [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+              </div>
+              <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+                <div id="error-postalCode-field-is-required" [hidden]="!formControl.hasError('required')">
+                  Postcode field is required!
+                </div>
+                <div id="error-postalCode-max-size-field-is-required" [hidden]="!formControl.hasError('maxlength')">
+                  Postcode maximum size is 50 characters!
+                </div>
+                <div id="error-postcode-contains-string-forbidden-characters" [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+                  Postcode can only contain letters, numbers, whitespace and the following symbols: _ . & -
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ibmCol>
+            <div *ngIf="hotelForm.get('address.city'); let formControl" data-text-input class="bx--form-item bx--text-input-wrapper">
+              <label for="city" class="bx--label">City</label>
+              <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+                   class="bx--text-input__field-wrapper">
+                <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+                  <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+                </div>
+                <input id="city"
+                       maxlength="50"
+                       formControlName="city"
+                       type="text"
+                       class="bx--text-input"
+                       placeholder="City"
+                       required
+                       autocomplete="on"
+                       [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+              </div>
+              <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+                <div id="error-city-field-is-required" [hidden]="!formControl.hasError('required')">
+                  City field is required!
+                </div>
+                <div id="error-city-max-size-field-is-required" [hidden]="!formControl.hasError('maxlength')">
+                  City maximum size is 50 characters!
+                </div>
+                <div id="error-city-contains-string-forbidden-characters" [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+                  City can only contain letters, numbers, whitespace and the following symbols: _ . & -
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div ibmCol class="space-mt-6" [columnNumbers]="{'lg': 6, 'md': 6, 'sm': 6}">
+    <app-table [searchEnabled]="false"
+               [paginationEnabled]="false"
+               [addButtonEnabled]="true"
+               [singleSelectEnabled]="true"
+               [overflowMenuItems]="overflowMenuItems"
+               [isLoading]="loading"
+               [tableDataHeader]="tableHeaders"
+               [unpaginatedTableData]="tableData"
+               (addToTable)="openAddNewDeskModal()"
+               addButtonCaption="Add Desk"
+               emptyTableMessage="This hotel has no desks."></app-table>
+  </div>
+</div>
+<div ibmRow class="justify-content-flex-end">
+  <div class="bx--col auto-width">
+    <button class="bx--btn bx--btn--secondary button-width-min"
+            id="discard-button"
+            type="button"
+            (click)="discard()">Discard
+    </button>
+  </div>
+  <div class="bx--col auto-width">
+    <button class="bx--btn bx--btn--primary button-width-min"
+            id="submit-button"
+            type="button"
+            (click)="submit()"
+            [disabled]="hotelForm.invalid">Save
+    </button>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<ibm-modal size="sm" [open]="open">
+  <ibm-modal-header (closeSelect)="closeModal()">
+    <p ibmModalHeaderHeading class="bx--type-beta">Feedback</p>
+  </ibm-modal-header>
+  <section class="bx--modal-content">
+    <form [formGroup]="feedbackForm">
+      <div *ngIf="feedbackForm.get('topic'); let formControl" class="bx--form-item bx--text-input-wrapper space-mb-6">
+        <ibm-dropdown id="topic-dropdown"
+                      label="Topic"
+                      formControlName="topic"
+                      placeholder="Choose an option"
+                      required>
+          <ibm-dropdown-list [items]="topics"></ibm-dropdown-list>
+        </ibm-dropdown>
+        <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+          <div id="error-topic-field-is-required" [hidden]="!formControl.hasError('required')">
+            Topic field is required!
+          </div>
+        </div>
+      </div>
+      <div *ngIf="feedbackForm.get('feedback'); let formControl"
+           data-text-input
+           class="bx--form-item bx--text-input-wrapper">
+        <label for="feedback" class="bx--label">Feedback</label>
+        <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+             class="bx--text-input__field-wrapper">
+          <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+            <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+          </div>
+          <textarea id="feedback"
+                    maxlength="500"
+                    type="text"
+                    class="bx--text-input"
+                    placeholder="Write your feedback here..."
+                    formControlName="feedback"
+                    required
+                    [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}"></textarea>
+        </div>
+        <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+          <div id="error-feedback-field-is-required" [hidden]="!formControl.hasError('required')">
+            Feedback field is required!
+          </div>
+          <div id="error-feedback-field-is-size"
+               [hidden]="!(formControl.hasError('maxlength') || formControl.hasError('minlength'))">
+            Feedback should be between 15 and 500 characters!
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+  <ibm-modal-footer>
+    <button id="discard-feedback-button" ibmButton="secondary" (click)="cancel()">
+      Discard
+    </button>
+    <button id="submit-feedback-button" ibmButton='primary' (click)="save()" [disabled]="feedbackForm.invalid">
+      Submit
+    </button>
+  </ibm-modal-footer>
+</ibm-modal>

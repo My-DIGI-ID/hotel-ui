@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div class="bx--grid">
+  <div class="bx--row content-center">
+    <div ibmCol [columnNumbers]="{'lg': 3, 'md': 3, 'sm': 6, 'xs': 6}">
+      <svg *ngIf="success" icon ibmIconCheckmarkFilled size="32" class="success-icon"></svg>
+      <svg *ngIf="!success" icon ibmIconErrorFilled size="32" class="error-icon"></svg>
+        <h2>{{getHeaderText()}}</h2>
+        <p class="sub-text-with-margin">{{getText()}}</p>
+        <button ibmButton="primary" (click)="showCheckinCredentials()">
+          Back to Guest Queue
+          <svg class="bx--btn__icon" ibmIconArrowRight size="16"></svg>
+        </button>
+    </div>
+  </div>
+</div>

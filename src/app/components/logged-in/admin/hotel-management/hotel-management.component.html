@@ -1,0 +1,32 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div class="bx--grid">
+  <div class="bx--row">
+    <div class="bx--col">
+      <h3 class="space-mb-8" id="hotel-management-page-title">Administration</h3>
+      <app-table tableTitle="New Hotels"
+                 addButtonCaption="Add hotel"
+                 [singleSelectEnabled]="true"
+                 [addButtonEnabled]="true"
+                 [overflowMenuItems]="overflowMenuItems"
+                 [isLoading]="loading"
+                 [tableDataHeader]="tableHeader"
+                 [unpaginatedTableData]="tableData"
+                 (addToTable)="showAddHotel()"></app-table>
+    </div>
+  </div>
+</div>

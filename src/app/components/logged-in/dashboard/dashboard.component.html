@@ -1,0 +1,49 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div ibmGrid class="layout-mt-6">
+  <div ibmRow>
+    <div ibmCol class="space-pl-9 space-pr-9">
+      <h3 class="space-mb-6">Collect Guest Data, Digitally</h3>
+      <p>By scanning a QR code, guests can send us their contact data directly from their mobile app. Use the menus below to generate QR codes and review the data the guest has submitted.</p>
+    </div>
+    <div ibmCol class="space-pl-9 space-pr-9">
+      <img src="assets/pictograms/desktop.svg" class="pictogram" alt="Show QR code pictogram">
+      <h4 class="space-mt-5 space-mb-5">Show QR Code</h4>
+      <p>Print QR Code to generate a PDF file that can be printed out and displayed to the traveller on the front
+        desk.</p>
+      <p>Select this option to show the QR Code in a digital format</p>
+      <button ibmButton="primary" (click)="showQRCode()">
+        Show QR Code
+        <svg class="bx--btn__icon" ibmIconDevices size="16"></svg>
+      </button>
+      <p>Select this option to print the QR Code</p>
+      <button ibmButton="primary" (click)="printQrCode()">
+        Print QR Code
+        <svg class="bx--btn__icon" ibmIconPrinter size="16"></svg>
+      </button>
+    </div>
+    <div ibmCol class="space-pl-9 space-pr-9">
+      <img src="assets/pictograms/user--analytics.svg" class="pictogram" alt="Show Data pictogram">
+      <h4 class="space-mt-5 space-mb-5">Show data</h4>
+      <p>View the list of travellers currently waiting at your front desk.</p>
+      <button ibmButton="primary" (click)="showCheckinCredentials()">
+        Guest Queue
+        <svg class="bx--btn__icon" ibmIconUserProfile size="16"></svg>
+      </button>
+    </div>
+  </div>
+</div>

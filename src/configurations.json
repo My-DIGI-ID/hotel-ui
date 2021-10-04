@@ -1,0 +1,7 @@
+{
+  "SSIBK_HOTEL_UI_CONTROLLER_APIURL": "http://localhost:8090",
+  "SSIBK_HOTEL_UI_CONTROLLER_EXTERNAL_APIURL": "",
+  "SSIBK_HOTEL_UI_LOGO_URL": "assets/pictograms/bee.svg",
+  "SSIBK_HOTEL_UI_TITLE": "SSIBK Hotel UI",
+  "SSIBK_HOTEL_UI_VERSION": "local development build"
+}

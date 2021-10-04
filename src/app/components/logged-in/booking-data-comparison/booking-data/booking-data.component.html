@@ -1,0 +1,81 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<h4 class="space-mb-7">Booking data</h4>
+<div ibmGrid>
+  <div ibmRow>
+    <div ibmCol>
+      <div ibmRow class="space-mb-6">
+        <div ibmCol class="layout-pl-2">
+          <p class="label">Booking number</p>
+          <p id="booking-data-booking-number" class="active">{{bookingData?.bookingId}}</p>
+        </div>
+        <div ibmCol class="layout-pl-2">
+          <p class="label">E-Mail</p>
+          <p id="booking-data-email" class="active">{{bookingData?.companyEmail}}</p>
+        </div>
+      </div>
+      <div ibmRow class="space-mb-6">
+        <div ibmCol class="column-validation" [ngClass]="{'has-error': !bookingDataValidation?.isLastNameValid}">
+          <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+          <p class="label">Last name</p>
+          <p id="booking-data-last-name" class="active">{{bookingData?.lastName}}</p>
+          <p class="validation-message">Last name doesn't match credential.</p>
+        </div>
+        <div ibmCol class="column-validation" [ngClass]="{'has-error': !bookingDataValidation?.isFirstNameValid}">
+          <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+          <p class="label">First name</p>
+          <p id="booking-data-first-name" class="active">{{bookingData?.firstName}}</p>
+          <p class="validation-message">First name doesn't match credential.</p>
+        </div>
+      </div>
+      <div ibmRow class="space-mb-6">
+        <div ibmCol class="column-validation" [ngClass]="{'has-error': !bookingDataValidation?.isStreetValid}">
+          <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+          <p class="label">Street</p>
+          <p id="booking-data-company-address-street"
+             class="active">{{bookingData?.companyAddressStreet}}</p>
+          <p class="validation-message">Street doesn't match credential.</p>
+        </div>
+      </div>
+      <div ibmRow class="space-mb-6">
+        <div ibmCol class="column-validation" [ngClass]="{'has-error': !bookingDataValidation?.isZipCodeValid}">
+          <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+          <p class="label">Zip code</p>
+          <p id="booking-data-company-address-zip-code"
+             class="active">{{bookingData?.companyAddressZipCode}}</p>
+          <p class="validation-message">Zip code doesn't match credential.</p>
+        </div>
+        <div ibmCol class="column-validation" [ngClass]="{'has-error': !bookingDataValidation?.isCityValid}">
+          <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+          <p class="label">City</p>
+          <p id="booking-data-company-address-city" class="active">{{bookingData?.companyAddressCity}}</p>
+          <p class="validation-message">City doesn't match credential.</p>
+        </div>
+      </div>
+      <div ibmRow>
+        <div ibmCol class="layout-pl-2">
+          <p class="label">Arrival</p>
+          <p id="booking-data-arrival-date" class="active">{{bookingData?.arrivalDate | date:'mediumDate'}}</p>
+        </div>
+        <div ibmCol class="layout-pl-2">
+          <p class="label">Departure</p>
+          <p id="booking-data-departure-date" class="active">{{bookingData?.departureDate | date:'mediumDate'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

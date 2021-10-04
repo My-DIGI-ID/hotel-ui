@@ -1,0 +1,151 @@
+0.0.17
+--------------------------------------------------------------------------------
+Removal of the hardcode configuration Values (Check the Affected configuration section for the impacted fields in the configuration file).
+Handling of the Special character in the Address field - Custom pattern Validation changes.
+Creating the Index - In order to remove the older check-in information more than 24 hours ago.
+Fixing the failed automated test cases.
+Changed related to updating the information on PMS.
+Street Name comparison when the short name was written on the booking system.
+BUGS
+Fixing the typo error on copyright disclaimer.
+Desk drop display when the screen size reduced.
+Fixed issue that Index are created on test database instead of Hotel Controller db.
+
+0.0.16
+--------------------------------------------------------------------------------
+Enable the user to edit/delete the desk and the Hotel from the Hotel-ui
+Security changes on the Hotel ui to invalidate the token and unreliable scheduling sessions.
+Desk id section label name changes for the Edit/create desk section.
+Contact information hyperlink added to the Hotel-ui page.
+Security changes related to the Hotel ui for the token blacklisting.
+Automatically update guest lists without need to reload page.
+Changes related to the automatic retrieval based on the basis id details from opera database based on the scan date.
+Changes related to the automatic retrieval of user booking which contains the replacement of the special characters in the user name in the booking system.
+Changes related to the automatic retrieval based on the basis id details from the mock data.
+Changes on the xml upload to the samba server.
+BUGS
+Duplicate Desk Id and the desk name check.
+Carbon Pagination display changes.
+Text display on the Guest queue table when the mouse hover over.
+The Automatic manual reload on the Guest queue page redirecting to the First Desk queue.
+
+0.0.15
+--------------------------------------------------------------------------------
+Changing from the Pilot ledger to the Test ledger in the demo/dev environment for the ID wallet.
+Replacing the special character in the first name and last name of the employee In order to match the similar to the hotel booking system database.
+Allowing the German capital ẞ
+Exclude wsdl2java generated objects from source control.
+BUGS
+Display first name and last name in the correct column in the booking details table.
+Add Expiry date to hotel integration.
+Fix sorting of a table by specific column.
+
+0.0.14
+--------------------------------------------------------------------------------
+Adding an expiry date of the basis id to avoid the issue on the integration.
+Fixing config issues for all hotels	.
+Replace old notificationService with new one and refactor Credentials components.
+BUGS
+Allowing the character = in the password field
+
+0.0.13
+--------------------------------------------------------------------------------
+Change the Regex in order to cover also upper case German special characters.
+Error during editing hotel and user.
+Upgrade Carbon version.
+Internationalization of the hardcoded texts, get the text from JSON files.
+BUGS
+500 error on Hotel controller.
+Date of expiry is null.
+AFFECTED config params
+Carbon upgrade: If this persists delete your node_modules and your package-lock.json and do an npm install and rebuild the app so it can pick up the new carbon version.
+Reconfigure the endpoints in order to point to the new test/demo Ledger. Also, to correlate with the new version of the Wallet ID app (v 1.3)
+
+0.0.12
+--------------------------------------------------------------------------------
+Session tokens' storage changed, added httponly secure cookies.
+Trivial passwords cannot be set for hotel users: all passwords have to comply with a password policy.
+URL of the QR-code is configurable through an environment variable.
+Release version is shown in the footer.
+Solved keystore exposure in open source github.
+
+0.0.11
+--------------------------------------------------------------------------------
+Add connection Timeout on SOAP request for Opera	hotel-integration-controller
+Improve pmsDataController, sihotService PMS data exceptions, uploadtoSMB exception on 102 error catching of XML file and data send	hotel-integration-controller
+Install Hyperlefger Indy nodes
+Add hotel agent to the jenkins CI pipeline
+Brut-force entry prevention, hotel-controller
+BUGS
+env variable to set hotel name in proof request modal
+
+0.0.10
+--------------------------------------------------------------------------------
+Add support number and e-mail to contact modal
+Update implementation for upload XML to SMB server
+Search for bookings shall look for arrival date = scan date and scan date - 1
+Sending of the guest data (update PMS data function) shall be formatted in ISO2 (SIHOT)
+Add SQL inject regex validation
+BUGS
+Hide password icon the same as show password icon
+In case of error on feedback creation, the notification appears behind the feedback modal
+remove expiry date from proof request
+add birth date to update function in PMS
+
+0.0.9
+--------------------------------------------------------------------------------
+Create 404 page	Hotel-UI
+Added spring profile to disable swagger UI in production environment and disable creation default user/user as well as IBM Hotel
+  SPRING_PROFILES_ACTIVE=prod for production environment
+Create Error notification service	Hotel-ui
+Added field validation against forbidden characters (e.g. ignore capital letters, ue vs. ü etc.)	Hotel-ui, Hotel-Controller
+All notifications are being created as toasts messages (see "all credentials are valid" as an example)	Hotel-ui
+several frontend improvements	Hotel-UI
+BUGS
+Admin user is updated by start hotel-controller (the admin role of the application is being updated after a restart of the controller now)	Hotel-Controller
+SMB server connection issue fixed (the standard port used is 445, please be sure to open that port in your SMB server container)	Hotel-Integration-Service
+Xml file is not saved to local disk anymore
+
+0.0.8
+--------------------------------------------------------------------------------
+Add Logged in Guard
+Add User Guard
+Sanitize input data
+Display date of birth during hotel check-in
+As a hotel administrator, I want to search for users, hotels & check-in credentials in the list and have pagination so that I have a better overview.
+Add autofocus on input fields
+No hotel will be shown if entered word is not part of a hotel name in the list
+Add spring profile env variable for hotel-integration-service
+Add the verify flag in docker build for hotel integration service	hotel integration service
+Deploy Open Source code on GitHub
+Finalise readme
+Finalise readme	hotel integration service
+Integration for Sihot and Opera profile	hotel-integration-server
+As a receptionist I want to be notified if data fields of the booking do not match with the credential data so that I can get into a conversation with the traveller.
+BUGS
+Desk should collapse if I click outside the dropdown
+
+0.0.7
+--------------------------------------------------------------------------------
+search for users, hotels & check-in credentials in the list and have a pagination,
+Create XML digital registration and upload to SMB server
+
+0.0.6
+--------------------------------------------------------------------------------
+edit User and see changes
+edit or delete hotel
+hotel ID as additional input fields for creating hotels
+when assigning an employee to a hotel there is a drop down field now a search and the alphabetical sorting of the hotels
+login (BN and PW) on one page
+renaming from master ID to Basis-ID
+Copy the employer certificate into the clipboard (as a whole or individual fields)
+notify receptionist if traveler's data fields do not match with credential data
+print booking data and credentials
+dummy booking data for E2E testing
+footer where users can submit feedback
+BUGS
+fix unit- tests for UserController on hotel-controller
+fix unit  test for hotel-management.component
+revert UserCreationDTO to not have an id(hotel-controller)
+
+

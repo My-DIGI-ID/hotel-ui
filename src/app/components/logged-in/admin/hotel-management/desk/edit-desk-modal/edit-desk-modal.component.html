@@ -1,0 +1,67 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<ibm-modal size="sm" [open]="open">
+  <ibm-modal-header (closeSelect)="closeModal()" class="space-mb-5">
+    <p ibmModalHeaderHeading class="bx--type-beta">Edit Desk</p>
+  </ibm-modal-header>
+  <section class="bx--modal-content">
+    <form [formGroup]="deskForm">
+      <div *ngIf="deskForm.get('deskName'); let formControl"
+           data-text-input
+           class="bx--form-item bx--text-input-wrapper">
+        <label for="deskName" class="bx--label">Desk name</label>
+        <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+             class="bx--text-input__field-wrapper">
+          <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+            <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+          </div>
+          <input id="deskName"
+                 maxlength="100"
+                 type="text"
+                 class="bx--text-input"
+                 placeholder="Desk name"
+                 formControlName="deskName"
+                 required
+                 autocomplete="on"
+                 [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+        </div>
+        <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+          <div id="error-desk-name-field-is-required" [hidden]="!formControl.hasError('required')">
+            Desk name field is required!
+          </div>
+          <div id="error-desk-name-max-size-field-is-required" [hidden]="!formControl.hasError('maxlength')">
+            Desk name maximum size is 100 characters!
+          </div>
+          <div id="error-desk-name-contains-string-forbidden-characters" [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+            Desk name can only contain letters, numbers, whitespace and the following symbols: _ . & -
+          </div>
+          <div id="error-desk-name-is-not-unique" [hidden]="!formControl.hasError('notUnique')">
+            The hotel contains desks with the same name.
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+  <ibm-modal-footer>
+    <button id="edit-or-add-desk-cancel-button" ibmButton="secondary" (click)="cancel()">
+      Discard
+    </button>
+    <button id="edit-or-add-desk-save-button" ibmButton='primary' (click)="save()" [disabled]="deskForm.invalid">
+      Update
+    </button>
+  </ibm-modal-footer>
+</ibm-modal>

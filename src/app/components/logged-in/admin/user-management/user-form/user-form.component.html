@@ -1,0 +1,216 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<form [formGroup]="userForm" (ngSubmit)="submit()" autocomplete="off">
+  <div *ngIf="userForm.get('login'); let formControl"
+       data-text-input
+       class="bx--form-item bx--text-input-wrapper space-mt-6">
+    <label for="login" class="bx--label">Username</label>
+    <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--text-input__field-wrapper">
+      <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+        <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+      </div>
+      <input id="login"
+             maxlength="50"
+             formControlName="login"
+             type="text"
+             class="bx--text-input"
+             required
+             appAutofocus
+             [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+    </div>
+    <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--form-requirement">
+      <div id="error-username-is-required" [hidden]="!formControl.hasError('required')">
+        Username field is required!
+      </div>
+      <div id="error-username-max-size" [hidden]="!formControl.hasError('maxlength')">
+        Username can have a maximum size of 50 characters!
+      </div>
+      <div id="error-username-not-unique" [hidden]="!formControl.hasError('notUnique')">
+        Username already exists!
+      </div>
+      <div id="error-username-forbidden-characters" [hidden]="!(formControl.hasError('idContainsForbiddenCharacters'))">
+        Username can only contain letters, numbers, whitespace and the following symbols: _ - .
+      </div>
+    </div>
+  </div>
+  <div *ngIf="userForm.get('firstName'); let formControl"
+       data-text-input
+       class="bx--form-item bx--text-input-wrapper space-mt-6">
+    <label for="firstName" class="bx--label">First name</label>
+    <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--text-input__field-wrapper">
+      <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+        <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+      </div>
+      <input id="firstName"
+             maxlength="50"
+             formControlName="firstName"
+             type="text"
+             class="bx--text-input"
+             [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+    </div>
+    <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)" class="bx--form-requirement">
+      <div [hidden]="!formControl.hasError('maxlength')">
+        First name can have a maximum size of 50 characters!
+      </div>
+      <div [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+        First name can only contain letters, numbers, whitespace and the following symbols: _ . & -
+      </div>
+    </div>
+  </div>
+  <div *ngIf="userForm.get('lastName'); let formControl"
+       data-text-input
+       class="bx--form-item bx--text-input-wrapper space-mt-6">
+    <label for="lastName" class="bx--label">Last name</label>
+    <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--text-input__field-wrapper">
+      <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+        <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+      </div>
+      <input id="lastName"
+             maxlength="50"
+             formControlName="lastName"
+             type="text"
+             class="bx--text-input"
+             required
+             [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+    </div>
+    <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--form-requirement">
+      <div [hidden]="!formControl.hasError('required')">
+        Last name field is required!
+      </div>
+      <div [hidden]="!formControl.hasError('maxlength')">
+        Last name can have a maximum size of 50 characters!
+      </div>
+      <div [hidden]="!formControl.hasError('fieldContainsForbiddenCharacters')">
+        Last name can only contain letters, numbers, whitespace and the following symbols: _ . & -
+      </div>
+    </div>
+  </div>
+  <div *ngIf="userForm.get('email'); let formControl"
+       data-text-input
+       class="bx--form-item bx--text-input-wrapper space-mt-6">
+    <label for="email" class="bx--label">E-Mail</label>
+    <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--text-input__field-wrapper">
+      <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+        <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+      </div>
+      <input id="email"
+             maxlength="254"
+             formControlName="email"
+             type="email"
+             class="bx--text-input"
+             required
+             [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+    </div>
+    <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--form-requirement">
+      <div [hidden]="!formControl.hasError('required')">
+        Email field is required!
+      </div>
+      <div [hidden]="!(formControl.hasError('maxlength') || formControl.hasError('minlength'))">
+        Email be between 5 and 254 characters!
+      </div>
+      <div [hidden]="!formControl.hasError('email')">
+        This is not a valid e-mail address.
+      </div>
+    </div>
+  </div>
+  <div *ngIf="userForm.get('password'); let formControl"
+       data-text-input
+       class="bx--form-item bx--text-input-wrapper bx--password-input-wrapper space-mt-6"
+       [ngClass]="{'disabled': formControl.disabled}">
+    <label for="password" class="bx--label">Password</label>
+    <div [attr.data-invalid]="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--text-input__field-wrapper">
+      <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)">
+        <svg ibmIconWarningFilled class="bx--text-input__invalid-icon" size="16"></svg>
+      </div>
+      <input id="password"
+             maxlength="50"
+             formControlName="password"
+             [type]="passwordInputValueHidden ? 'password' : 'text'"
+             class="bx--text-input bx--password-input"
+             data-toggle-password-visibility
+             required
+             [ngClass]="{'bx--text-input--invalid': formValidator.isFormControlInvalidAfterTouch(formControl)}">
+      <div *ngIf="passwordInputValueHidden"
+           (click)="togglePasswordVisibility()"
+           class="password-button-background-fix bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center">
+        <span class="bx--assistive-text">Show password</span>
+        <svg ibmIconView class="bx--icon--visibility-on" size="16"></svg>
+      </div>
+      <div *ngIf="!passwordInputValueHidden"
+           (click)="togglePasswordVisibility()"
+           class="password-button-background-fix bx--text-input--password__visibility__toggle bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center">
+        <span class="bx--assistive-text">Hide password</span>
+        <svg ibmIconViewOff class="bx--icon--visibility-off" size="16"></svg>
+      </div>
+    </div>
+    <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--form-requirement">
+      <div [hidden]="!formControl.hasError('required')">
+        Password field is required!
+      </div>
+      <div [hidden]="!(formControl.hasError('maxlength') || formControl.hasError('minlength'))">
+        Password must be between 10 and 50 characters!
+      </div>
+      <div [hidden]="!(formControl.hasError('passwordContainsForbiddenCharacters'))">
+        Password can only contain letters, numbers and the following symbols: _ ! @ # $ % ^ & * ( ) - . ?
+      </div>
+      <div [hidden]="!(formControl.hasError('weakPassword'))">
+        The password must contain at least one lowercase letter, one capital letter, one number and one of the following special characters: _ ! @ # $ % ^ & * ( ) - . ?
+      </div>
+    </div>
+  </div>
+  <div *ngIf="userForm.get('hotel'); let formControl" class="space-mt-6">
+    <label class="bx--label">Hotel name</label>
+    <ibm-combo-box required
+                   id="hotelName"
+                   size="xl"
+                   formControlName="hotel"
+                   (search)="onSearch($event)"
+                   [items]="filteredHotels">
+      <ibm-dropdown-list></ibm-dropdown-list>
+    </ibm-combo-box>
+    <div *ngIf="formValidator.isFormControlInvalidAfterTouch(formControl)"
+         class="bx--form-requirement">
+      <div [hidden]="!formControl.hasError('required')">
+        Hotel name field is required!
+      </div>
+    </div>
+  </div>
+  <div ibmRow>
+    <div ibmCol>
+      <div id="discard-button"
+           class="bx--btn bx--btn--secondary bx--col-lg-8 bx--col-md-8 bx--col-sm-8 space-mt-6"
+           (click)="discard()">Discard
+      </div>
+    </div>
+    <div ibmCol>
+      <button id="submit-button"
+              class="bx--btn bx--btn--primary bx--col-lg-8 bx--col-md-8 bx--col-sm-8 space-mt-6"
+              type="submit"
+              [disabled]="userForm.invalid">Save
+      </button>
+    </div>
+  </div>
+</form>

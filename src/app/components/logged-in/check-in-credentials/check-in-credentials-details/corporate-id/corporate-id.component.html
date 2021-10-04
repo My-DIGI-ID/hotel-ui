@@ -1,0 +1,63 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div [ngClass]="{'data-invalid': !valid}">
+  <h4 class="space-mb-7">{{detailsType}}</h4>
+  <div class="bx--grid--full-width">
+    <div class="bx--row space-mb-6">
+      <div class="bx--col">
+        <p class="label">Company</p>
+        <p id="corporate-id-company-name" class="active">{{corporateId?.companyName}}</p>
+      </div>
+    </div>
+    <div class="bx--row space-mb-6">
+      <div class="bx--col">
+        <p class="label">Company subject</p>
+        <p id="corporate-id-company-subject" class="active">{{corporateId?.companySubject}}</p>
+      </div>
+    </div>
+    <div class="bx--row space-mb-6">
+      <div class="bx--col">
+        <p class="label">First name (Employee)</p>
+        <p id="corporate-id-first-name" class="active">{{corporateId?.firstName}}</p>
+      </div>
+    </div>
+    <div class="bx--row space-mb-6">
+      <div class="bx--col">
+        <p class="label">Last name (Employee)</p>
+        <p id="corporate-id-last-name" class="active">{{corporateId?.familyName}}</p>
+      </div>
+    </div>
+    <div class="bx--row space-mb-6">
+      <div class="bx--col">
+        <p class="label">Street (Company)</p>
+        <p id="corporate-id-company-address-street" class="active">{{corporateId?.companyAddressStreet}}</p>
+      </div>
+    </div>
+    <div class="bx--row space-mb-6">
+      <div class="bx--col">
+        <p class="label">Zip code (Company)</p>
+        <p id="corporate-id-company-address-zip-code" class="active">{{corporateId?.companyAddressZipCode}}</p>
+      </div>
+    </div>
+    <div class="bx--row space-mb-6">
+      <div class="bx--col">
+        <p class="label">City (Company)</p>
+        <p id="corporate-id-company-address-city" class="active">{{corporateId?.companyAddressCity}}</p>
+      </div>
+    </div>
+  </div>
+</div>

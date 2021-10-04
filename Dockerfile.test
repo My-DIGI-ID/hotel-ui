@@ -1,0 +1,17 @@
+FROM node:15.7.0-alpine3.10
+
+RUN apk add --no-cache chromium
+
+ENV CHROME_BIN=/usr/bin/chromium-browser
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY package.json package-lock.json /usr/src/app/
+RUN npm ci --legacy-peer-deps
+
+COPY . /usr/src/app
+
+RUN npx ng lint
+
+RUN npx ng test --watch=false --browsers ChromeHeadless

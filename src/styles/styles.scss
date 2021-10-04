@@ -1,0 +1,167 @@
+/*
+ * Copyright 2021 Bundesrepublik Deutschland
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '~carbon-components/scss/globals/scss/styles';
+@import '~carbon-components/scss/globals/scss/colors';
+@import 'variables';
+@import 'animations';
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+hr {
+  border: 1px solid $gray-20;
+}
+
+.font-weight-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-weight-regular {
+  font-weight: $font-weight-regular;
+}
+
+.font-weight-slim {
+  font-weight: $font-weight-slim;
+}
+
+.bx--tooltip {
+  min-width: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  height: 3rem;
+}
+
+ibm-placeholder {
+  // Fix for dropdown list of <ibm-dropdown inside of a modal
+  .dropdown.bx--dropdown__wrapper.bx--list-box--expanded {
+    z-index: 9001 !important;
+  }
+}
+
+// Fix for Mozilla Firefox modal fading
+.bx--modal-content--overflow-indicator {
+  background-image: unset !important;
+}
+
+// Fix for search bar outline misplacement due to Carbon version - can be removed when Carbon patches the error
+.bx--search--lg .bx--search-input, .bx--search--lg.bx--search--expandable.bx--search--expanded .bx--search-input {
+  height: inherit;
+}
+
+// Fix for search bar magnifying glass icon misplacement due to Carbon version - can be removed when Carbon patches the error
+.bx--search--lg .bx--search-magnifier-icon {
+  left: unset;
+}
+
+$spaces: 0.125rem, 0.25rem, 0.5rem, 0.75rem, 1rem, 1.5rem, 2rem, 2.5rem, 3rem, 4rem, 5rem, 6rem, 7rem, 8rem;
+
+@for $i from 1 through length($spaces) {
+  $space: nth($spaces, $i);
+
+  .space-mt-#{$i} {
+    margin-top: #{$space};
+  }
+  .space-mb-#{$i} {
+    margin-bottom: #{$space};
+  }
+  .space-mr-#{$i} {
+    margin-right: #{$space};
+  }
+  .space-ml-#{$i} {
+    margin-left: #{$space};
+  }
+  .space-pt-#{$i} {
+    padding-top: #{$space};
+  }
+  .space-pb-#{$i} {
+    padding-bottom: #{$space};
+  }
+  .space-pr-#{$i} {
+    padding-right: #{$space};
+  }
+  .space-pl-#{$i} {
+    padding-left: #{$space};
+  }
+}
+
+$layouts: 1rem, 1.5rem, 2rem, 3rem, 4rem, 6rem, 10rem;
+
+@for $i from 1 through length($layouts) {
+  $layout: nth($layouts, $i);
+
+  .layout-mt-#{$i} {
+    margin-top: #{$layout};
+  }
+  .layout-mb-#{$i} {
+    margin-bottom: #{$layout};
+  }
+  .layout-mr-#{$i} {
+    margin-right: #{$layout};
+  }
+  .layout-ml-#{$i} {
+    margin-left: #{$layout};
+  }
+  .layout-pt-#{$i} {
+    padding-top: #{$layout};
+  }
+  .layout-pb-#{$i} {
+    padding-bottom: #{$layout};
+  }
+  .layout-pr-#{$i} {
+    padding-right: #{$layout};
+  }
+  .layout-pl-#{$i} {
+    padding-left: #{$layout};
+  }
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.auto-width {
+  flex: unset;
+  width: auto;
+}
+
+.full-width {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.notification-overlay {
+  position: absolute;
+  z-index: 99999;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  ibm-notification {
+    animation: fadeIn .2s;
+    opacity: 1;
+  }
+}
